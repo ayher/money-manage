@@ -1,2 +1,2 @@
 # money-manage
-理财
+账本
