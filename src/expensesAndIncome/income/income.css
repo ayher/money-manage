@@ -1,0 +1,38 @@
+.incomeUi{
+    padding:20px;
+    display: flex;
+    flex-direction:column;
+}   
+.incomeUi>div:nth-child(2){
+    flex:50%;
+}
+.incomeUi>div:nth-child(4){
+    flex:50%;
+}
+.incomeUi>div{
+    overflow: auto;
+}
+.incomeUi>h4{
+    background:#000;
+    color:#fff;
+    text-align:left;
+    padding:2px;
+}
+.incomeUi-cell{
+    display: flex;
+    justify-content:center;
+}
+.incomeUi-cell>span{
+    text-align:center;
+    border-bottom: 1px solid #000;
+}
+.incomeUi-cell>span:nth-child(1){
+    flex:60%;
+}
+.incomeUi-cell>span:nth-child(2){
+    flex:10%;
+    border: none;
+}
+.incomeUi-cell>span:nth-child(3){
+    flex:30%;
+}

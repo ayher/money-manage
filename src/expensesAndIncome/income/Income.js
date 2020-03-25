@@ -1,13 +1,13 @@
 import React from 'react';
 import IncomeUi from './IncomeUi';
-
+import './income.css';
 class Income extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-            getMoney:[{'工资':2000},{'房租':100},{'电影':1020},{'午餐':100},{'电影':1020},{'午餐':100}],
+			getMoney: [{ '工资': 2000 }, { '房租': 100 }, { '工资': 2000 }, { '房租': 100 }],
             getMoneyUi:[],
-            loseMoney:[{'电影':1020},{'午餐':100},{'电影':1020},{'午餐':100},{'电影':1020},{'午餐':100},{'电影':1020},{'午餐':100}],
+            loseMoney:[{'电影':1020},{'午餐':100}],
             loseMoneyUi:[],
             countIcome:0,
         }
@@ -20,10 +20,11 @@ class Income extends React.Component{
 			for(let k in this.state.getMoney[i])
 			{
 				countIcome_test+=this.state.getMoney[i][k];
-				getMoneyUi_test.push(<div className="row"  key={i}>
-					<div  className="col-xs-6 col-sm-6" style={{textAlign:'center',textDecoration:'underline'}}>{k}</div>
-					<div  className="col-xs-6 col-sm-6 " style={{textAlign:'center',textDecoration:'underline'}}>
-					{this.state.getMoney[i][k]}</div>
+				getMoneyUi_test.push(<div className="incomeUi-cell" key={i}>
+					<span >{k}</span>
+					<span></span>
+					<span >
+						{this.state.getMoney[i][k]}</span>
 				</div> )
 			}
 		}
@@ -31,10 +32,11 @@ class Income extends React.Component{
 			for(let k in this.state.loseMoney[i])
 			{
 				countIcome_test-=this.state.loseMoney[i][k];
-				lostMoneyUi_test.push(<div className="row" key={i}>
-					<div  className="col-xs-6 col-sm-6" style={{textAlign:'center'}}>{k}</div>
-					<div  className="col-xs-6 col-sm-6" style={{textAlign:'center'}}>
-					{this.state.loseMoney[i][k]}</div>
+				lostMoneyUi_test.push(<div className="incomeUi-cell" key={i}>
+					<span >{k}</span>
+					<span></span>
+					<span >
+						{this.state.loseMoney[i][k]}</span>
 				</div> )
 			}
 		}

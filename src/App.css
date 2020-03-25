@@ -1,0 +1,15 @@
+.incomeAndExpenses{
+    display: flex;
+    background: #F8EBC1;
+    height: 100%;
+    padding:0px 10%;
+}
+.incomeAndExpenses>div:nth-child(1){
+    flex:35%;
+}
+.incomeAndExpenses>div:nth-child(2){
+    flex:30%;
+}
+.incomeAndExpenses>div:nth-child(3){
+    flex:35%;
+}

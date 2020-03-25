@@ -1,0 +1,38 @@
+.expensesUi{
+    padding:20px;
+    display: flex;
+    flex-direction:column;
+}   
+.expensesUi>div:nth-child(2){
+    flex:50%;
+}
+.expensesUi>div:nth-child(4){
+    flex:50%;
+}
+.expensesUi>div{
+    overflow: auto;
+}
+.expensesUi>h4{
+    background:#000;
+    color:#fff;
+    text-align:left;
+    padding:2px;
+}
+.expensesUi-cell{
+    display: flex;
+    justify-content:center;
+}
+.expensesUi-cell>span{
+    text-align:center;
+    border-bottom: 1px solid #000;
+}
+.expensesUi-cell>span:nth-child(1){
+    flex:60%;
+}
+.expensesUi-cell>span:nth-child(2){
+    flex:10%;
+    border: none;
+}
+.expensesUi-cell>span:nth-child(3){
+    flex:30%;
+}

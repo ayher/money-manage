@@ -1,0 +1,15 @@
+.CountUi{
+    padding: 20px;
+}
+.CountUi>p{
+    display: flex;
+    justify-content:space-between;
+}
+.CountUi>h4{
+    text-align: right;
+    display: flex;
+    justify-content:space-between;
+}
+.CountUi>h2{
+    text-align: center;
+}
