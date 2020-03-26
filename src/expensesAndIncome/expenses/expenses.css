@@ -2,15 +2,24 @@
     padding:20px;
     display: flex;
     flex-direction:column;
+    height: 100%;
+    width: 100%;
 }   
-.expensesUi>div:nth-child(2){
-    flex:50%;
+.expensesUi>:nth-child(1){
+    flex:5%;
 }
-.expensesUi>div:nth-child(4){
-    flex:50%;
+.expensesUi>:nth-child(2){
+    flex:45%;
+}
+.expensesUi>:nth-child(3){
+    flex:5%;
+}
+.expensesUi>:nth-child(4){
+    flex:45%;
 }
 .expensesUi>div{
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .expensesUi>h4{
     background:#000;

@@ -2,15 +2,34 @@
     padding:20px;
     display: flex;
     flex-direction:column;
+    height: 100%;
+    width: 100%;
 }   
-.incomeUi>div:nth-child(2){
-    flex:50%;
+.incomeUi>h4{
+    display: flex;
+    justify-content:space-between;
 }
-.incomeUi>div:nth-child(4){
-    flex:50%;
+.incomeUi>h4>span:nth-child(2){
+    background: #fff;
+    padding: 0px 10px;
+    color: #000;
+    border-radius: 5px;
+}
+.incomeUi>:nth-child(1){
+    flex:5%;
+}
+.incomeUi>:nth-child(2){
+    flex:45%;
+}
+.incomeUi>:nth-child(3){
+    flex:5%;
+}
+.incomeUi>:nth-child(4){
+    flex:45%;
 }
 .incomeUi>div{
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .incomeUi>h4{
     background:#000;

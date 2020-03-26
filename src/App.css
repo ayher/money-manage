@@ -13,3 +13,14 @@
 .incomeAndExpenses>div:nth-child(3){
     flex:35%;
 }
+
+.slick-slide>div {
+    background: #F8EBC1;
+    height: 100vh;
+}
+.slick-dots>li{
+    background: #000;
+}
+.slick-dots-bottom {
+    bottom: 15% !important;
+}
