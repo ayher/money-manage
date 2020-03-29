@@ -8,7 +8,7 @@ export default (props)=>{
 			<div >
 				{
 					props.getMoney.map((value,index)=>{
-						return (<div className="incomeUi-cell" 
+						return (<div className="incomeUi-cell"  type="收入"
 							key={index} onClick={e=>props.clickGetMoneyUi(e)} index={index}>
 							<span >{Object.keys(value)}</span>
 							<span></span>
@@ -24,7 +24,7 @@ export default (props)=>{
 				{
 					props.loseMoney.map((value,index)=>{
 					return (
-						<div className="incomeUi-cell" key={index}
+						<div className="incomeUi-cell" key={index} type="支出"
 						onClick={e=>props.clickGetMoneyUi(e)} index={index}>
 							<span >{Object.keys(value)}</span>
 							<span></span>

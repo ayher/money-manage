@@ -6,6 +6,9 @@
     width: 100%;
 }   
 .incomeUi>h4{
+    background:#000;
+    color:#fff;
+    padding:2px;
     display: flex;
     justify-content:space-between;
 }
@@ -30,12 +33,6 @@
 .incomeUi>div{
     overflow-y: auto;
     overflow-x: hidden;
-}
-.incomeUi>h4{
-    background:#000;
-    color:#fff;
-    text-align:left;
-    padding:2px;
 }
 .incomeUi-cell{
     display: flex;

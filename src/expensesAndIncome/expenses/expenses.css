@@ -5,6 +5,19 @@
     height: 100%;
     width: 100%;
 }   
+.expensesUi>h4{
+    background:#000;
+    color:#fff;
+    padding:2px;
+    display: flex;
+    justify-content:space-between;
+}
+.expensesUi>h4>span:nth-child(2){
+    background: #fff;
+    padding: 0px 10px;
+    color: #000;
+    border-radius: 5px;
+}
 .expensesUi>:nth-child(1){
     flex:5%;
 }
@@ -20,12 +33,6 @@
 .expensesUi>div{
     overflow-y: auto;
     overflow-x: hidden;
-}
-.expensesUi>h4{
-    background:#000;
-    color:#fff;
-    text-align:left;
-    padding:2px;
 }
 .expensesUi-cell{
     display: flex;

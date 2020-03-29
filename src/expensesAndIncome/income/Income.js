@@ -8,7 +8,6 @@ class Income extends React.Component{
 		this.state = {
 			getMoney: [{ '工资': 2000 }, { '房租': 100 }],
             loseMoney:[{'电影':1020},{'午餐':100}],
-			countIcome:0,
 			incomeVisible:false,
 			incomeFromInput:'',
 			incomeMoneyInput:'',
@@ -40,13 +39,15 @@ class Income extends React.Component{
 		});
 	}
 	incomeVisiblehandleOk=()=>{
-		let list=this.state.getMoney;
+		let list;
+		if(this.state.modalFro==='收入')list=this.state.getMoney;
+		else list=this.state.loseMoney;
 		if(this.state.clickChangeIndex===-1){
 			let incomeFromInput=this.state.incomeFromInput;
 			let incomeMoneyInput=this.state.incomeMoneyInput;
 			for( let value of list){
 				if(incomeFromInput===Object.keys(value)[0]){
-					message.info('收入来源重复');
+					message.info('来源重复');
 					return 
 				}
 			}
@@ -57,24 +58,41 @@ class Income extends React.Component{
 		else{
 			list[this.state.clickChangeIndex][this.state.incomeFromInput]=this.state.incomeMoneyInput;
 		}
-		this.setState({
-			incomeVisible: false,
-			getMoney:list,
-			incomeFromInput:'',
-			incomeMoneyInput:'',
-			clickChangeIndex:-1
-		});
+		this.state.modalFro==='收入'?
+			this.setState({
+				incomeVisible: false,
+				getMoney:list,
+				incomeFromInput:'',
+				incomeMoneyInput:'',
+				clickChangeIndex:-1,
+			}):
+			this.setState({
+				incomeVisible: false,
+				loseMoney:list,
+				incomeFromInput:'',
+				incomeMoneyInput:'',
+				clickChangeIndex:-1,
+			})
 	}
 	incomeVisibleDelete=()=>{
-		let list=this.state.getMoney;
+		let list;
+		if(this.state.modalFro==='收入')list=this.state.getMoney;
+		else list=this.state.loseMoney;
 		list.splice(this.state.clickChangeIndex,1)
+		this.state.modalFro==='收入'?
 		this.setState({
 			incomeVisible: false,
 			getMoney:list,
 			clickChangeIndex:-1,
 			incomeFromInput:'',
 			incomeMoneyInput:''
-		});
+		}):this.setState({
+			incomeVisible: false,
+			loseMoney:list,
+			clickChangeIndex:-1,
+			incomeFromInput:'',
+			incomeMoneyInput:''
+		})
 	}
 	incomeVisibleCancel = () => {
 		this.setState({
@@ -85,21 +103,24 @@ class Income extends React.Component{
 		});
 	}
 	clickGetMoneyUi=(e)=>{
-		
+		let ty=e.target.parentNode.getAttribute('type');
 		let index=e.target.parentNode.getAttribute('index')
-		let list=this.state.getMoney;
+		let list;
+		if(ty==='收入')list=this.state.getMoney;
+		else list=this.state.loseMoney;
 		this.setState({
 			incomeVisible: true,
 			incomeFromInput:Object.keys(list[index]),
 			incomeMoneyInput:list[index][Object.keys(list[index])],
-			clickChangeIndex:index
+			clickChangeIndex:index,
+			modalFro:ty,
 		});
 	}
 	componentDidMount() {
 	}
 	render(){
 		return (
-			<IncomeUi countIcome={this.state.countIcome} 
+			<IncomeUi
 				getMoney={this.state.getMoney} 
 				loseMoney={this.state.loseMoney}
 				addIncome={this.addIncome}
