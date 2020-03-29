@@ -1,13 +1,18 @@
 import React from 'react';
 import IncomeUi from './IncomeUi';
 import { message } from 'antd';
+import {
+	getIncome,
+	getOutcome
+}from '../../redux/action/income';
 import './income.css';
+import { connect } from 'react-redux';
 class Income extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			getMoney: [{ '工资': 2000 }, { '房租': 100 }],
-            loseMoney:[{'电影':1020},{'午餐':100}],
+			getMoney: [],
+            loseMoney:[],
 			incomeVisible:false,
 			incomeFromInput:'',
 			incomeMoneyInput:'',
@@ -27,6 +32,7 @@ class Income extends React.Component{
 		})
 	}
 	addIncome = () => {
+		console.log(this.setState,'ssdasdad')
 		this.setState({
 			modalFro:'收入',
 			incomeVisible: true,
@@ -117,6 +123,29 @@ class Income extends React.Component{
 		});
 	}
 	componentDidMount() {
+		this.props.dispatch(getIncome()).then(()=>{
+			if (!!this.props.income){
+				if (!!this.props.income.getIncome){
+					this.setState({
+						getMoney: this.props.income.getIncome
+					})
+				}
+				
+			}
+		}) 
+
+		this.props.dispatch(getOutcome()).then(() => {
+			if (!!this.props.income) {
+				if (!!this.props.income.getOutcome)
+				{
+					this.setState({
+						loseMoney: this.props.income.getOutcome
+					})
+				}
+				
+			}
+		}) 
+		
 	}
 	render(){
 		return (
@@ -140,4 +169,11 @@ class Income extends React.Component{
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return { 
+		income: state.income ,
+	};
+};
+Income = connect(mapStateToProps)(Income);
 export default Income;

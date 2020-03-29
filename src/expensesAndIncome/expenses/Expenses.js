@@ -2,18 +2,46 @@ import React from 'react';
 import ExpensesUi from './ExpensesUi';
 import { message } from 'antd';
 import './expenses.css';
+import {
+	getResponsible,
+	getAsset
+} from '../../redux/action/expenses';
+import { connect } from 'react-redux';
 class Expenses extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			getExpenses: [{ '茅台股票': 2000 }, { '苹果股票': 100 }],
-			loseExpenses: [{ '房贷': 1020 }, { '信用卡': 100 }],
+			getExpenses: [],
+			loseExpenses: [],
 			expensesVisible:false,
 			expensesFromInput:'',
 			expensesExpensesInput:'',
 			clickChangeIndex:-1,
 			modalFro:'',
 		}
+	}
+	componentDidMount() {
+		this.props.dispatch(getAsset()).then(() => {
+			if (!!this.props.expenses) {
+				if (!!this.props.expenses.getAsset) {
+					this.setState({
+						getExpenses: this.props.expenses.getAsset
+					})
+				}
+
+			}
+		})
+
+		this.props.dispatch(getResponsible()).then(() => {
+			if (!!this.props.expenses) {
+				if (!!this.props.expenses.getResponsible) {
+					this.setState({
+						loseExpenses: this.props.expenses.getResponsible
+					})
+				}
+
+			}
+		}) 
 	}
 	expensesFromInputChange=(e)=>{
 		this.setState({
@@ -107,7 +135,6 @@ class Expenses extends React.Component {
 		let list;
 		if(ty==='资产')list=this.state.getExpenses;
 		else list=this.state.loseExpenses;
-		console.log(list,index)
 		this.setState({
 			expensesVisible: true,
 			expensesFromInput:Object.keys(list[index]),
@@ -115,8 +142,6 @@ class Expenses extends React.Component {
 			clickChangeIndex:index,
 			modalFro:ty,
 		});
-	}
-	componentDidMount() {
 	}
 	render() {
 		return (
@@ -139,4 +164,12 @@ class Expenses extends React.Component {
 		)
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		expenses: state.expenses,
+	};
+};
+Expenses = connect(mapStateToProps)(Expenses);
+
 export default Expenses;
