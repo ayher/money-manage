@@ -1,5 +1,5 @@
 .incomeUi{
-    padding:20px;
+    padding:10px 10px;
     display: flex;
     flex-direction:column;
     height: 100%;
@@ -11,6 +11,10 @@
     padding:2px;
     display: flex;
     justify-content:space-between;
+}
+.incomeUi>h4>span{
+    display: flex;
+    align-items:center;
 }
 .incomeUi>h4>span:nth-child(2){
     background: #fff;

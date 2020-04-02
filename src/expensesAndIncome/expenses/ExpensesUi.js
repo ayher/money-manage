@@ -7,6 +7,13 @@ export default (props) => {
             <div className="expensesUi">
                 <h4 ><span>资产</span><span onClick={props.addExpenses}>添加</span></h4>
                 <div>
+                    <div className="expensesUi-title">
+                        <strong >类型</strong>
+                        <strong></strong>
+                        <strong >
+                            收入/份数
+                        </strong>
+                    </div>
                     {props.getExpenses.map((value,index)=>{
                         return <div className="expensesUi-cell" key={index} type="资产"
                         onClick={e=>props.clickGetExpensesUi(e)} index={index}>
@@ -20,6 +27,13 @@ export default (props) => {
                 </div>
                 <h4 ><span>负责</span><span onClick={props.lostExpenses}>添加</span></h4>
                 <div>
+                    <div className="expensesUi-title">
+                        <strong >类型</strong>
+                        <strong></strong>
+                        <strong >
+                            支出
+                        </strong>
+                    </div>
                     {props.loseExpenses.map((value,index)=>{
                         return <div className="expensesUi-cell" key={index} type="负责"
                         onClick={e=>props.clickGetExpensesUi(e)} index={index}>

@@ -1,25 +1,35 @@
 import React from 'react';
-import CountUi from './CountUi'
+import CountUi from './CountUi';
+import { connect } from 'react-redux';
 class Count extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            cash:100000,
-            cashFlow:900,
-            getMoney:2000,
-            loseMoney:500,
-            Dvalue: 0,
-        }
-    }
-    componentDidMount(){
-        this.setState({
-            Dvalue:this.state.getMoney - this.state.loseMoney
-        })
-    }
     render(){
-        return (<CountUi cash={this.state.cash} cashFlow={this.state.cashFlow}
-            getMoney={this.state.getMoney} loseMoney={this.state.loseMoney}
-            Dvalue={this.state.Dvalue}/>)
+        let cash = 0;
+        let cashFlow = 0;
+        let loseMoney = 0;
+        let getMoney=0;
+        if (this.props.income.income){
+            let income = this.props.income.income.income;
+            let outcome = this.props.income.income.outcome;
+
+            getMoney = income.reduce((total, index) => {
+                return (total + index[Object.keys(index)]);
+            },0)
+
+            loseMoney = outcome.reduce((total, index) => {
+                return (total + index[Object.keys(index)]);
+            }, 0)
+        }
+        
+        return (<CountUi cash={cash} cashFlow={cashFlow}
+            getMoney={getMoney} loseMoney={loseMoney}
+            Dvalue={getMoney - loseMoney}/>)
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        income: state.income,
+    };
+};
+Count = connect(mapStateToProps)(Count);
 export default Count;

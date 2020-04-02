@@ -1,16 +1,37 @@
 .expensesUi{
-    padding:20px;
+    padding:10px 10px;
     display: flex;
     flex-direction:column;
     height: 100%;
     width: 100%;
 }   
+.expensesUi-title{
+    display: flex;
+    border-bottom:1px solid #000 ;
+}
+.expensesUi-title>strong{
+    text-align: center;
+    font-size: bold ;
+}
+.expensesUi-title>strong:nth-child(1){
+    flex:60%;
+}
+.expensesUi-title>strong:nth-child(2){
+    flex:10%;
+}
+.expensesUi-title>strong:nth-child(3){
+    flex:30%;
+}
 .expensesUi>h4{
     background:#000;
     color:#fff;
     padding:2px;
     display: flex;
     justify-content:space-between;
+}
+.expensesUi>h4>span{
+    display: flex;
+    align-items:center;
 }
 .expensesUi>h4>span:nth-child(2){
     background: #fff;

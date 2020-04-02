@@ -1,0 +1,15 @@
+.head{
+    height: 5%;
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    background: #000;
+    color: #fff;
+}
+.head>span{
+    display: flex;
+    align-items:center;
+}
+.otherLogin{
+    display: flex;
+}

@@ -1,19 +1,19 @@
 import actions from '../action/index';
 const {
     GET_INCOME_SUCESS,
-    GET_OUTCOME_SUCESS,
+    UPDATE_INCOME_SUCESS
 } = actions;
 export default (state = {}, action) => {
     switch (action.type) {
         case GET_INCOME_SUCESS:
             return {
                 ...state,
-                getIncome: action.data,
+                income: action.data,
             };
-        case GET_OUTCOME_SUCESS:
+        case UPDATE_INCOME_SUCESS:
             return {
                 ...state,
-                getOutcome: action.data,
+                income: action.data,
             };
         default:
             return state;

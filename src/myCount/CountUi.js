@@ -8,7 +8,5 @@ export default (props) => {
         <p><span>总支出: </span><span>{props.loseMoney}</span></p>
         <div style={{borderTop:'1px solid #000'}}></div>
         <p><span>收入:</span><span>{props.Dvalue}</span></p>
-        <br/>
-        <p>高额贷款：{props.Dvalue}</p>
     </div>)
 }
