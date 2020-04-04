@@ -3,7 +3,9 @@ import IncomeUi from './IncomeUi';
 import { message } from 'antd';
 import {
 	getIncome,
-	updateIncome
+	updateIncome,
+	updateOutcome,
+	getOutcome
 } from '../../redux/action/income';
 import './income.css';
 import { connect } from 'react-redux';
@@ -45,8 +47,8 @@ class Income extends React.Component {
 	}
 	incomeVisiblehandleOk = () => {
 		let list;
-		if (this.state.modalFro === '收入') list = this.props.income.income.income;
-		else list = this.props.income.income.outcome;
+		if (this.state.modalFro === '收入') list = this.props.income.income;
+		else list = this.props.income.outcome;
 		if (this.state.clickChangeIndex === -1) {
 			let incomeFromInput = this.state.incomeFromInput;
 			let incomeMoneyInput = this.state.incomeMoneyInput;
@@ -63,8 +65,6 @@ class Income extends React.Component {
 		else {
 			list[this.state.clickChangeIndex][this.state.incomeFromInput] = Number(this.state.incomeMoneyInput);
 		}
-		console.log(list,'1111111111111111111111')
-		let income = this.props.income.income;
 		if(this.state.modalFro === '收入'){
 				this.setState({
 					incomeVisible: false,
@@ -72,7 +72,7 @@ class Income extends React.Component {
 					incomeMoneyInput: '',
 					clickChangeIndex: -1,
 				});
-				income.income = list;
+				this.props.dispatch(updateIncome(list));
 			}else{
 				this.setState({
 					incomeVisible: false,
@@ -80,16 +80,14 @@ class Income extends React.Component {
 					incomeMoneyInput: '',
 					clickChangeIndex: -1,
 				});
-				income.outcome = list;
+				this.props.dispatch(updateOutcome(list));
 			}
-		this.props.dispatch(updateIncome({ income: income }));
 	}
 	incomeVisibleDelete = () => {
 		let list;
-		if (this.state.modalFro === '收入') list = this.props.income.income.income;
-		else list = this.props.income.income.outcome;
+		if (this.state.modalFro === '收入') list = this.props.income.income;
+		else list = this.props.income.outcome;
 		list.splice(this.state.clickChangeIndex, 1)
-		let income = this.props.income.income;
 		if (this.state.modalFro === '收入') {
 			this.setState({
 				incomeVisible: false,
@@ -97,7 +95,7 @@ class Income extends React.Component {
 				incomeFromInput: '',
 				incomeMoneyInput: ''
 			})
-			income.income = list;
+			this.props.dispatch(updateIncome(list));
 		} else {
 			this.setState({
 				incomeVisible: false,
@@ -105,9 +103,8 @@ class Income extends React.Component {
 				incomeFromInput: '',
 				incomeMoneyInput: ''
 			})
-			income.outcome = list;
+			this.props.dispatch(updateOutcome(list));
 		}
-		this.props.dispatch(updateIncome({ income: income }));
 	}
 	incomeVisibleCancel = () => {
 		this.setState({
@@ -121,8 +118,8 @@ class Income extends React.Component {
 		let ty = e.target.parentNode.getAttribute('type');
 		let index = e.target.parentNode.getAttribute('index')
 		let list;
-		if (ty === '收入') list = this.props.income.income.income;
-		else list = this.props.income.income.outcome;
+		if (ty === '收入') list = this.props.income.income;
+		else list = this.props.income.outcome;
 		this.setState({
 			incomeVisible: true,
 			incomeFromInput: Object.keys(list[index]),
@@ -140,13 +137,20 @@ class Income extends React.Component {
 
 			}
 		})
+		this.props.dispatch(getOutcome()).then(() => {
+			if (!!this.props.income) {
+				if (!!this.props.income.outcome) {
+					message.info("获取数据成功")
+				}
+			}
+		})
 
 	}
 	render() {
 		return (
 			<IncomeUi
-				getMoney={this.props.income.income ? this.props.income.income.income : []}
-				loseMoney={this.props.income.income ? this.props.income.income.outcome : []}
+				getMoney={this.props.income.income ? this.props.income.income : []}
+				loseMoney={this.props.income.outcome ? this.props.income.outcome : []}
 				addIncome={this.addIncome}
 				incomeVisiblehandleOk={this.incomeVisiblehandleOk}
 				incomeVisibleCancel={this.incomeVisibleCancel}

@@ -5,9 +5,17 @@ const actionType = keyMirror({
 	GET_INCOME_SUCESS:null,
 	GET_INCOME_FAILURE: null,
 
+	// 获取支出
+	GET_OUTCOME_SUCESS: null,
+	GET_OUTCOME_FAILURE: null,
+
 	// 修改收入
 	UPDATE_INCOME_SUCESS: null,
 	UPDATE_INCOME_FAILURE: null,
+
+	// 修改支出
+	UPDATE_OUTCOME_SUCESS: null,
+	UPDATE_OUTCOME_FAILURE: null,
 
 	// 获取资产
 	GET_ASSET_SUCESS: null,

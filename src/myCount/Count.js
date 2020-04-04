@@ -7,9 +7,9 @@ class Count extends React.Component{
         let cashFlow = 0;
         let loseMoney = 0;
         let getMoney=0;
-        if (this.props.income.income){
-            let income = this.props.income.income.income;
-            let outcome = this.props.income.income.outcome;
+        if (this.props.income.income && this.props.income.outcome){
+            let income = this.props.income.income;
+            let outcome = this.props.income.outcome;
 
             getMoney = income.reduce((total, index) => {
                 return (total + index[Object.keys(index)]);
