@@ -1,2 +1,2 @@
 # money-manage
-记录账单 
+记录账单
