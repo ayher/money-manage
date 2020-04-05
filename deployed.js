@@ -2,7 +2,7 @@ var http = require('http')
 var spawn = require('child_process').spawn
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({
-    path: '/pushCode',
+    path: '/home',
     secret: '12345678'
 })
 http.createServer(function (req, res) {

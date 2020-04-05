@@ -1,2 +1,2 @@
 cd /root/project
-touch test
+mkdir test

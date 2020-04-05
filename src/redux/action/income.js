@@ -21,11 +21,15 @@ export function getIncome(query = '') {
     return async (dispatch) => {
         try {
             let data = (await axios.get(`${baseUrl}/getincome`)).data;
-            console.log(data)
-            dispatch({
-                type: GET_INCOME_SUCESS,
-                data: data
-            });
+            data.status==='SUCCESS'?
+                dispatch({
+                    type: GET_INCOME_SUCESS,
+                    data: data.data
+                }):
+                dispatch({
+                    type: GET_INCOME_FAILURE,
+                    error: new Error('获取失败, 请稍后再试')
+                });
         } catch (error) {
             dispatch({
                 type: GET_INCOME_FAILURE,
@@ -37,10 +41,15 @@ export function getIncome(query = '') {
 export function getOutcome(query = '') {
     return async (dispatch) => {
         try {
-            let data = (await axios.get(`./api/outcome.json`)).data;
+            let data = (await axios.get(`${baseUrl}/getoutcome`)).data;
+            data.status === 'SUCCESS'?
             dispatch({
                 type: GET_OUTCOME_SUCESS,
-                data: data
+                data: data.data
+            }):
+            dispatch({
+                type: GET_OUTCOME_FAILURE,
+                error: new Error('获取失败, 请稍后再试')
             });
         } catch (error) {
             dispatch({
