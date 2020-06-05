@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import income from './income.js'
-import expenses from './expenses.js'
+import come from './come.js'
+import balance from './balance.js'
 export default combineReducers({
-	income,
-	expenses
+	come,
+	balance
 });

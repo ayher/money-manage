@@ -1,4 +1,4 @@
 
 export default{
-    baseUrl:'http://www.ayher.xyz:3001'
+    baseUrl:'http://127.0.0.1:3001'
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Expenses from './expensesAndIncome/expenses/Expenses.js';
-import Income from './expensesAndIncome/income/Income.js';
-import Count from './myCount/Count';
+import Come from './component/Come'
+import Count from './component/Count';
+import Balance from './component/Balance'
 
 import 'antd/dist/antd.css';
 import { Carousel } from 'antd';
@@ -26,20 +26,18 @@ class App extends React.Component {
 					<Carousel afterChange={(e)=>{
 						this.setState({ titleIndex:e})
 					}} >
-						<Income />
+						<Come />
 						<Count />
-						<Expenses />
+						<Balance />
 					</Carousel> :
 					<div className="incomeAndExpenses" >
-						<Income />
+						<Come />
 						<Count />
-						<Expenses />
+						<Balance />
 					</div>
 				}
 			</>
-	);
-
-
+		);
 	}
 	
 }

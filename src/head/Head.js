@@ -2,7 +2,6 @@ import React from 'react';
 import './head.css'
 import {  Modal } from 'antd';
 import { QqOutlined, WechatOutlined, AlipayCircleOutlined} from '@ant-design/icons';
-import QQ from '../image/qq.jpg'
 class Head extends React.Component{
     constructor(props){
         super(props);
